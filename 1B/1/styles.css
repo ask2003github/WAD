@@ -1,0 +1,153 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Container for registration form */
+  .container {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    color: #fff;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+  
+  label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    color: #dcdcdc;
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  input:focus {
+    border-color: #4CAF50;
+    background-color: #f4f4f4;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #4CAF50;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .message {
+    text-align: center;
+    margin-top: 10px;
+    color: #ff6347;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;
+    }
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+  
+  /* Styling for the list page */
+  .container-list {
+    background: #fff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    color: #333;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #4CAF50;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .delete-btn {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ff4500;
+  }
+  
+  .user-info {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  

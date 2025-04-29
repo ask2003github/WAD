@@ -1,0 +1,6 @@
+mkdir static-website
+cd static-website
+npm init -y
+npm install express
+node server.js
+Set-ExecutionPolicy RemoteSigned

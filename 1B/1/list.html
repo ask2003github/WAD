@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registered Users</title>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container-list">
+    <h2>Registered Users</h2>
+    <ul id="userList"></ul>
+  </div>
+
+  <script>
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const userList = document.getElementById("userList");
+
+    users.forEach((user, index) => {
+      const li = document.createElement("li");
+      
+      const userInfo = document.createElement("span");
+      userInfo.classList.add("user-info");
+      userInfo.textContent = `Name: ${user.name}, Email: ${user.email}`;
+      
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("delete-btn");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.onclick = () => {
+        users.splice(index, 1); // Remove user
+        localStorage.setItem("users", JSON.stringify(users)); // Update localStorage
+        li.remove(); // Remove from UI
+      };
+      
+      li.appendChild(userInfo);
+      li.appendChild(deleteBtn);
+      userList.appendChild(li);
+    });
+  </script>
+</body>
+</html>

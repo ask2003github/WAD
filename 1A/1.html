@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exam Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: #343a40;
+      color: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background: #495057;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: absolute;
+        transform: translateX(-100%);
+        z-index: 1000;
+      }
+
+      .sidebar.show {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar p-3" id="sidebar">
+    <h5 class="mb-3">Admin Dashboard</h5>
+    <a href="#" data-section="dashboard">Dashboard</a>
+    <a href="#" data-section="exams">Exams</a>
+    <a href="#" data-section="students">Students</a>
+    <a href="#" data-section="results">Results</a>
+    <a href="#" data-section="settings">Settings</a>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <button class="btn btn-outline-secondary d-md-none mb-3" id="toggleBtn">☰ Menu</button>
+    <div id="mainContent"></div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('mainContent');
+
+    const sections = {
+      dashboard: `
+        <h2>Welcome, Admin</h2>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="card text-bg-primary">
+              <div class="card-body">
+                <h5>Total Exams</h5>
+                <p class="display-6">15</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-bg-success">
+              <div class="card-body">
+                <h5>Registered Students</h5>
+                <p class="display-6">230</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-bg-warning">
+              <div class="card-body">
+                <h5>Pending Results</h5>
+                <p class="display-6">8</p>
+              </div>
+            </div>
+          </div>
+        </div>`,
+      exams: `
+        <h2>Exams</h2>
+        <p>List of all scheduled exams will appear here.</p>`,
+      students: `
+        <h2>Students</h2>
+        <p>Manage student records and enrollments here.</p>`,
+      results: `
+        <h2>Results</h2>
+        <p>Upload and view exam results.</p>`,
+      settings: `
+        <h2>Settings</h2>
+        <p>Configure dashboard preferences and admin settings.</p>`
+    };
+
+    document.querySelectorAll('.sidebar a').forEach(link =>
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        content.innerHTML = sections[link.dataset.section];
+        sidebar.classList.remove('show');
+      })
+    );
+
+    toggleBtn.addEventListener('click', () => sidebar.classList.toggle('show'));
+
+    // Load default section
+    content.innerHTML = sections.dashboard;
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

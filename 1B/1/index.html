@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>User Registration</h2>
+    <form id="registrationForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" required placeholder="Enter your name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="Enter your email">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="Enter your password">
+
+      <button type="submit">Register</button>
+    </form>
+    <div class="message" id="errorMessage"></div>
+  </div>
+
+  <!-- JavaScript code to handle the registration process -->
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Validation check
+      if (!name || !email || !password) {
+        document.getElementById("errorMessage").textContent = "All fields are required!";
+        return;
+      }
+
+      const userData = { name, email, password };
+
+      // Save to localStorage
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      users.push(userData);
+      localStorage.setItem("users", JSON.stringify(users));
+
+      // AJAX POST request
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://jsonplaceholder.typicode.com/posts", true);
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 201) {
+          alert("Registration successful!");
+          window.location.href = "list.html"; // Redirect to list page
+        }
+      };
+
+      xhr.send(JSON.stringify(userData));
+    });
+  </script>
+</body>
+</html>
